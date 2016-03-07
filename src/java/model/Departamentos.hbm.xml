@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 07/03/2016 05:45:49 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="model.Departamentos" table="departamentos" catalog="peru" optimistic-lock="version">
+        <id name="iddepartamento" type="java.lang.Integer">
+            <column name="iddepartamento" />
+            <generator class="identity" />
+        </id>
+        <property name="departamento" type="string">
+            <column name="departamento" length="50" not-null="true" />
+        </property>
+        <set name="provinciases" table="provincias" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="iddepartamento" not-null="true" />
+            </key>
+            <one-to-many class="model.Provincias" />
+        </set>
+    </class>
+</hibernate-mapping>
